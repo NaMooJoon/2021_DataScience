@@ -30,16 +30,16 @@ arrange(country_ranking_mean, avg_rank)
 app <- read.csv("/Users/joonk/Desktop/Joon/2021-1/데이터과학/Assignment/Practice/apps_delimiter.csv",sep = "^", stringsAsFactors = FALSE)
 app <- app[,-1]
 str(app)
-apply(app, 2, function(some){length(unique(some))})
-app$Category <- as.factor(app$Category)
-app$Installs <- as.factor(app$Installs)
-app$Content.Rating <- as.factor(app$Content.Rating)
-app$Genres <- as.factor(app$Genres)
-app$Android.Ver <- as.factor(app$Android.Ver)
+sapply(app, function(some){length(unique(some))})
+app$Category <- factor(app$Category)
+app$Installs <- factor(app$Installs)
+app$Type <- factor(app$Type)
+app$Content.Rating <- factor(app$Content.Rating)
+app$Android.Ver <- factor(app$Android.Ver)
 str(app)
 
 # Question 6
-head(aggregate(Rating~Genres, app, mean), 6)
+head(aggregate(Rating ~ Genres, data = app, mean), 6)
 
 # Question 7
 head(app[order(-app$Reviews),], 6)
