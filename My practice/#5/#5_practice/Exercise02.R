@@ -1,0 +1,10 @@
+library(tidyr)
+library(dplyr)
+setwd("/Users/joonk/Desktop/Joon/2021-1/데이터과학/Assignment/My practice/#5_practice")
+bmi_cc <- read.csv("bmi_cc.csv")
+
+head(bmi_cc)
+bmi_cc_clean <- separate(bmi_cc, Country_ISO, c('Country', 'ISO'), sep = '/')
+head(bmi_cc_clean)
+bmi_cc2 <- unite(bmi_cc_clean,Country_ISO, Country, ISO, sep='-')
+head(bmi_cc2)
